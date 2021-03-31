@@ -1,6 +1,6 @@
 # Curso Java
 
-## Para a nossa aual usaremos o editor de texto Nano
+## Para a nossa aula usaremos o editor de texto Nano
 
 O Nano é um editor de texto para console.
 
