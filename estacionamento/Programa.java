@@ -1,10 +1,12 @@
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 class Programa {
 	
 	
 	private static int opcao = 0;
-	private static Carro carro = new Carro();
+	private static List<Carro> carros = new ArrayList<>();
 	
 	public static void main(String[] args){
 		Scanner scanner = new Scanner(System.in);
@@ -18,11 +20,15 @@ class Programa {
 			if(opcao==1){
 				System.out.println("Você entrou no estacionamento");
 				System.out.println("Digite a placa do veiculo !");
+				Carro carro = new Carro();
 				carro.setPlaca(scanner.next());
+				carros.add(carro);
 			} else if(opcao==2){
 				System.out.println("Você saiu do estacionamento");
 			} else if(opcao==6){
-				System.out.println("Sua placa eh " + carro.getPlaca());
+				for(Carro c : carros) {
+					System.out.println(c.getPlaca());
+				}
 			} else if(opcao==0){
 				System.out.println("Você está fora do sistema");
 			} else {
