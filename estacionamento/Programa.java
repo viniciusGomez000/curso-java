@@ -1,12 +1,12 @@
 import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 class Programa {
 	
 	
 	private static int opcao = 0;
-	private static List<Carro> carros = new ArrayList<>();
+	private static Map<String, Carro> carros = new HashMap<>();
 	
 	public static void main(String[] args){
 		Scanner scanner = new Scanner(System.in);
@@ -14,21 +14,36 @@ class Programa {
 
 		do {
 			
-			System.out.println("Escolha uma opcao: [1] Entrada | [2] Saida [3] Permanencia [4] Qtd de carros [5] Remover [6] Listar [0] Sair");
+			System.out.println("Escolha uma opcao: [1] Entrada | [2] Saida [3] " +
+			 "Permanencia [4] Qtd de carros [5] Remover [6] Listar [0] Sair");
 			opcao = scanner.nextInt();
 			
 			if(opcao==1){
 				System.out.println("Você entrou no estacionamento");
-				System.out.println("Digite a placa do veiculo !");
+				System.out.println("Digite a placa do veiculo que vai entrar!");
 				Carro carro = new Carro();
 				carro.setPlaca(scanner.next());
-				carros.add(carro);
+				carros.put(carro.getPlaca(), carro);
 			} else if(opcao==2){
-				System.out.println("Você saiu do estacionamento");
-			} else if(opcao==6){
-				for(Carro c : carros) {
-					System.out.println(c.getPlaca());
+				System.out.println("Digite a placa do veiculo que vai sair !");
+				String placaSaida = scanner.next();
+				
+				if (carros.containsKey(placaSaida)){
+					carros.remove(placaSaida);
+					System.out.println("Removido o carro " + placaSaida);
 				}
+				// for(Carro c : carros) {
+				// 	if(c.getPlaca().equals(placaSaida)){
+				// 		carros.remove(c);
+						
+				// 	}
+				// 	System.out.println("chegou aqui 1");
+				// }
+				// System.out.println("chegou aqui 2");
+			} else if(opcao==6){
+				// for(Carro c : carros) {
+				// 	System.out.println(c.getPlaca());
+				// }
 			} else if(opcao==0){
 				System.out.println("Você está fora do sistema");
 			} else {
