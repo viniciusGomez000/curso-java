@@ -4,20 +4,21 @@ import java.util.HashMap;
 
 class Programa {
 	
-	
 	private static int opcao = 0;
 	private static Map<String, Carro> carros = new HashMap<>();
-	
-	public static void main(String[] args){
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Bem vindo ao sistema de estacionamento !");
+	static Scanner scanner = new Scanner(System.in);
+	static String valor = "";
 
+	public static void programa(){
+	System.out.println("Bem vindo ao sistema de estacionamento !");
 		do {
-			
-			System.out.println("Escolha uma opcao: [1] Entrada | [2] Saida [3] " +
-			 "Permanencia [4] Qtd de carros [5] Remover [6] Listar [0] Sair");
-			opcao = scanner.nextInt();
-			
+			exibir();
+			if(valor.equals("1") || valor.equals("2") || valor.equals("0")){
+				opcao = Integer.parseInt(valor);
+			} else {
+				programa();
+				break;
+			}
 			if(opcao==1){
 				System.out.println("Você entrou no estacionamento");
 				System.out.println("Digite a placa do veiculo que vai entrar!");
@@ -27,7 +28,7 @@ class Programa {
 			} else if(opcao==2){
 				System.out.println("Digite a placa do veiculo que vai sair !");
 				String placaSaida = scanner.next();
-				
+
 				if (carros.containsKey(placaSaida)){
 					carros.remove(placaSaida);
 					System.out.println("Removido o carro " + placaSaida);
@@ -35,7 +36,7 @@ class Programa {
 				// for(Carro c : carros) {
 				// 	if(c.getPlaca().equals(placaSaida)){
 				// 		carros.remove(c);
-						
+
 				// 	}
 				// 	System.out.println("chegou aqui 1");
 				// }
@@ -49,8 +50,18 @@ class Programa {
 			} else {
 				System.out.println("Opcao invalida");
 			}
-		
+
 		}while(opcao!=0);
-		
 	}
+	
+	public static void main(String[] args){
+		programa();
+	}
+
+	private static void exibir(){
+		System.out.println("Escolha uma opcao: [1] Entrada | [2] Saida [3] " +
+		"Permanencia [4] Qtd de carros [5] Remover [6] Listar [0] Sair");
+		valor = scanner.next();
+	}
+
 }
