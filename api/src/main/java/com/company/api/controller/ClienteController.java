@@ -20,6 +20,6 @@ public class ClienteController {
 
     @PostMapping("/clientes")
     public Cliente save(@RequestBody Cliente cliente) {
-        return cliente;
+        return clienteService.save(cliente);
     }
 }
