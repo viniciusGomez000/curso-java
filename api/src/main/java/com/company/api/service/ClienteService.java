@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClienteService {
     public Cliente one(Integer id){
-        Cliente cliente = null;
+        Cliente cliente = new Cliente();
+        cliente.setId(1);
+        cliente.setNome("Teste");
         return cliente;
     }
 
