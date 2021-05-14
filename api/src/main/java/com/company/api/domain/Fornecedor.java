@@ -12,7 +12,7 @@ public class Fornecedor {
     private Integer id;
     private String nome;
 
-    public void setFornecedor(String  nome){this.nome = nome; }
+    public void setNome(String  nome){this.nome = nome; }
     public void setId(Integer id) { this.id = id; }
 
     public String getNome() { return nome; }
